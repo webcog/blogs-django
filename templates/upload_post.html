@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+{% comment %} <div class="col-3"></div> {% endcomment %}
+<div class="col-9 " style="margin-left:120px !important;">
+    <h2 class="text-center text-success my-2">Upload Your Post</h2>
+<form method="post" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    {{form.media}}
+
+    <div class="form-outline flex-fill mb-0">
+        <label class="form-label fw-bold" for="title">Title</label>
+        {% render_field form.title class="form-control" placeholder="Title" id="title" %}
+    </div>
+    <div class="form-outline flex-fill mb-0">
+        <label class="form-label fw-bold my-2" for="content">Content</label>
+        <br>
+        {% render_field form.content class="form-control" id="content" placeholder="Content" %}
+
+    </div>
+    <div class="form-outline flex-fill mb-0">
+        <label class="form-label fw-bold my-2" for="cat">Category</label>
+        {% render_field form.category class="form-control" id="cat" placeholder="Title" %}
+    </div>
+    <div class="form-outline flex-fill mb-0">
+        <label class="form-label fw-bold my-2" for="image">Upload Image</label>
+        {% render_field form.post_image class="form-control"  placeholder="" id="image" %}
+    </div>
+    <div class="d-flex my-2">
+<button class="btn btn-primary p-2" type="submit">Upload Post</button>
+    </div>
+</form>
+</div>
+<br>
+
+{% endblock content %}

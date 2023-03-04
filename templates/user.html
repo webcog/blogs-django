@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block usercss %}
+
+<style>
+.gradient-custom {
+
+  background: #f6d365;
+  
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+  
+
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+  }
+  .icon{
+    font-size: 35px;
+    color:black;
+  }
+  .yt:hover{
+    color: red;
+  }
+  .link:hover{
+    color: rgb(0, 13, 255);
+}
+.insta:hover{
+  color: rgb(255, 0, 72);
+}
+.fb:hover{
+  color: rgb(0, 13, 255);
+}
+</style>
+{% endblock usercss %}
+{% block content %}
+
+
+<section class="vh-50">
+  <div class="container py-5 h-50">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-11 mb-4 mb-lg-0" style="margin-left:90px !important">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="{{profile.profile_image.url }}"
+                alt="Avatar" class="img-fluid my-4" style="width: 80px;" />
+              <h5>{{ user.username }}</h5>
+              <p>{{profile.bio}}</p>
+              <a href="{% url 'setting' profile.id %}" class="btn btn-primary p-2 mt-3">Update Profile</a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">{{ request.user.email }}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Birth Date</h6>
+                    <p class="text-muted">{{ profile.birth_date }}</p>
+                  </div>
+                </div>
+                <h6>More</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Location</h6>
+                    <p class="text-muted">{{profile.location}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Website</h6>
+                    <p class="text-muted"><a href="{{ profile.website }}" class="text-decoration-none" target="_blank">{{ profile.website }}</a></p>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-start justify-content-center">
+                  <a href="{{ profile.facebook }}" target="_blank"  class="icon fb"><i class='bx bxl-facebook-circle'></i></a>
+                  <a href="{{ profile.instagram }}" target="_blank" class="ms-3 icon insta"><i class='bx bxl-instagram' ></i></a>
+                  <a href="{{ profile.linkedin }}" target="_blank" class="ms-3 icon link"><i class='bx bxl-linkedin-square' ></i></a>
+                  <a href="{{ profile.youtube }}" target="_blank" class="ms-3 icon yt"><i class='bx bxl-youtube' ></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<h1 class="text-center m-4">Your POSTS</h1>
+<div class="container">
+  <a href="{% url 'upload_post' %}" class="btn btn-outline-primary my-3 d-flex justify-content-center p-2" style="margin-left:90px !important">Upload Post</a>
+
+    {% for post in posts %}
+    {% if post.created_by == None %}
+      <h2 class="text-center my-4 text-danger">You Have Not Uploaded any Post Yet</h2>
+    {% endif %}
+<div class="card mb-3 shadow" style="max-width: 100%; margin-left:95px !important; background:transparent !important;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ post.post_image.url }}" style="height:304px;" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body p-4">
+          <h2 class="card-title">{{ post.title }}</h2>
+          <p class="card-text">{{ post.content|slice:"0:150" | safe  }}...</p>
+          <h6 class="card-text mt-1"><b>Category:- </b><span>{{ post.category }}</span></h6>
+          <h6 class="card-text mt-1"><b>Author:- </b><span>{{ post.created_by }}</span></h6>      
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary p-2 my-3 ">Read More</a>
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-warning p-2 my-3 ">Update Post</a>
+          <a href="{% url 'user_post_delete' post.slug %}" class="btn btn-danger p-2 my-3 ">Delete Post</a>
+          <hr>
+          <br>
+          <p class="card-text"><small class="text-muted mt-4">Last updated: {{ post.updated_at }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<br>
+
+{% endblock content %}

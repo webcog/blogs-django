@@ -1,0 +1,389 @@
+{% load static %}
+{% load widget_tweaks %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Settings</title>
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="images/favicon" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'css/setting/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/setting/bootstrap.css' %}">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="{% static 'css/setting/typography.css' %}">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="{% static 'css/setting/settings.css' %}">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{% static 'css/setting/responsive.css' %}">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+  <!-- Useful -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <!-- useful -->
+  <script src="https://kit.fontawesome.com/9f37ddf547.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   </head>
+   <body class="sidebar-main-active right-column-fixed">
+      <!-- loader Start
+      <div id="loading">
+         <div id="loading-center">
+         </div>
+      </div>
+   -->
+      <!-- loader END -->
+
+      {% block pass_done %}{% endblock pass_done %}
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         
+      
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container">
+               
+               <div class="row">
+                  <div class="col-6">
+                     <h3 class="card-title" style="text-transform: uppercase;">Account/ <span style="color: #48dbfb;">{{user}}</span></h3>
+                  </div>
+                  <div class="col-6">
+                     <a href="{% url 'category' %}" class="" style="float:right;font-weight:bold;">Go back to Home Page</a>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Account <span style="color: #48dbfb;">Setting</span></h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="acc-edit">
+                              <form method="post" enctype="multipart/form-data">
+                                 {% csrf_token %}
+                                 <div class="form-group">
+                                    <label for="profile"></label>
+                                    {% comment %} <input type="text" class="form-control" id="uname" placeholder="{{user}}" required> {% endcomment %}
+                                    {% render_field form.profile_image type="file" class="form-control" id="profile" %}
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="bio">Bio:</label>
+                                    {% comment %} <input type="text" class="form-control" id="uname" placeholder="{{user}}" required> {% endcomment %}
+                                    {% render_field form.bio type="textarea" class="form-control" id="bio" %}
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="location">Location:</label>
+                                    {% render_field form.location type="text" class="form-control" id="location" %}
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="birth_date">Birth Date:</label>
+                                    {% render_field form.birth_date type="date" class="form-control" id="birth_date" %}
+                                 </div> 
+                                 <div class="form-group">
+                                    <label for="website">Website:</label>
+                                    {% render_field form.website type="text" class="form-control" id="website" %}
+                                 </div> 
+                                 {% comment %} <div class="form-group">
+                                    <label class="d-block">Language Known:</label>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="english" checked="">
+                                       <label class="custom-control-label" for="english">English</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="french">
+                                       <label class="custom-control-label" for="french">French</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="hindi">
+                                       <label class="custom-control-label" for="hindi">Hindi</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="spanish">
+                                       <label class="custom-control-label" for="spanish">Spanish</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="arabic">
+                                       <label class="custom-control-label" for="arabic">Arabic</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                       <input type="checkbox" class="custom-control-input" id="italian">
+                                       <label class="custom-control-label" for="italian">Italian</label>
+                                    </div>
+                                 </div> {% endcomment %}
+                                 {% comment %} <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                                 &nbsp;
+                                 <button type="reset" class="btn iq-bg-danger">Cancel</button> {% endcomment %}
+                              {% comment %} </form> {% endcomment %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Social<span style="color: #48dbfb;"> Media</span></h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="acc-edit">
+                              {% comment %} <form method="post">
+                                 {% csrf_token %} {% endcomment %}
+                                 <div class="form-group">
+                                    <label for="facebook">Facebook:</label>
+                                    {% render_field form.facebook type="url" class="form-control" id="facebook" %}
+                                    {% comment %} <input type="text" class="form-control" id="facebook" placeholder="www.facebook.com"> {% endcomment %}
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="link">Linkedin:</label>
+                                    {% render_field form.linkedin type="url" class="form-control" id="link" %}
+
+                                    {% comment %} <input type="text" class="form-control" id="twitter" placeholder="www.twitter.com"> {% endcomment %}
+                                 </div>
+                                 
+                                 <div class="form-group">
+                                    <label for="instagram">Instagram:</label>
+                                    {% render_field form.instagram type="url" class="form-control" id="instagram" %}
+
+                                    {% comment %} <input type="text" class="form-control" id="instagram" placeholder="www.instagram.com"> {% endcomment %}
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="youtube">YouTube:</label>
+                                    {% render_field form.youtube type="url" class="form-control" id="youtube" %}
+
+                                    {% comment %} <input type="text" class="form-control" id="youtube" placeholder="www.youtube.com"> {% endcomment %}
+                                 </div>
+                                 <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+                                 &nbsp;
+                                 <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+{% block password_change %}{% endblock password_change %}
+<div class="col-lg-12">
+   <h3 class="text-center my-1" style="font-weight: bold;text-transform: uppercase;">Change <span style="color: #48dbfb;">Password</span></h3>
+
+                     <div class="iq-card">
+                        <div class="card-title">
+                        </div>
+                        <div class="iq-card-body p-0">
+                           <div class="iq-edit-list">
+                              <ul class="iq-edit-profile d-flex nav nav-pills">
+                                 <li class="col-md-3 p-0">
+                                    <a class="nav-link active"  data-toggle="pill"  href="#step1">
+                                    Step 1
+                                    </a>
+                                 </li>
+                                 <li class="col-md-3 p-0">
+                                    <a class="nav-link" href="{% url 'password_change' %}">
+                                    Step 2
+                                    </a>
+                                 </li>
+                                 <li class="col-md-3 p-0">
+                                    <a class="nav-link"  data-toggle="pill"  href="#chang-pwd">
+                                    Step 3
+                                    </a>
+                                 </li>
+                                 <li class="col-md-3 p-0">
+                                    <a class="nav-link" data-toggle="pill" href="#chang-pwd">
+                                    Manage Contact
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-12">
+                     <div class="iq-edit-list-data">
+                         <div class="tab-content">
+                              <div class="tab-pane fade active show" id="step1" role="tabpanel">
+                              <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Step <span style="color: #48dbfb;">1</span></h4>
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body">
+                                    <ul>
+                                       <li style="font-weight:bolder;"><a href="">Click on Step 2</a></li>
+                                       <li style="font-weight:bolder;"><a href="">After Click go on Step 3</a></li>
+                                       <p><b style="color:white;">Note! </b>If you go on Step 3 without Clicking on Step 2 it will not be worked</p>
+                                       <li style="font-weight:bolder;"><a href="">Now Changer Your Password according to requirements</a></li>
+                                       <li style="font-weight:bolder;"><a href="">Click on Submit</a></li>
+                                       <li style="font-weight:bolder;"><a href="">Your Password will be Changer Successfully</a></li>
+
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div> 
+                           <div class="tab-pane fade" id="chang-pwd" role="tabpanel">
+                              <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Change <span style="color: #48dbfb;">Password</span></h4>
+                                    </div>
+                                 </div>
+                                 <h4 class="text-center my-1" style="font-weight: bold;text-transform: uppercase;text-align:center;">First of all Click on <span style="color: #48dbfb;">Step 2</span></h4>
+                                 <div class="iq-card-body">
+                                    <form method="post">
+                                       {% csrf_token %}
+                                       <div class="form-group">
+                                          <label for="cpass">Current Password:</label>
+                                          <a href="javascripe:void();" class="float-right">Forgot Password</a>
+                                          {% comment %} {% render_field form.old_password type="password" class="form-control form-control-lg" id="cpass" placeholder="Password" %} {% endcomment %}
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="npass">New Password:</label>
+                                          {% comment %} {% render_field form.new_password1 type="password" class="form-control form-control-lg" id="npass" placeholder="New Password" %} {% endcomment %}
+                                         
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="vpass">Verify Password:</label>
+
+                                          {% comment %} {% render_field form.new_password2 type="password" class="form-control form-control-lg" id="vpass" placeholder="Confirm Password" %} {% endcomment %}
+                                       </div>
+                                       <button type="submit" class="btn btn-primary mr-2">Submit</button>&nbsp;
+                                       &nbsp;
+                                       <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+
+                           {% comment %} <div class="tab-pane fade" id="emailandsms" role="tabpanel">
+                              <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Email a<span style="color: #48dbfb;">nd SMS</span></h4>
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body">
+                                    <form>
+                                       <div class="form-group row align-items-center">
+                                          <label class="col-md-3" for="emailnotification">Email Notification:</label>
+                                          <div class="col-md-9 custom-control custom-switch">
+                                             <input type="checkbox" class="custom-control-input" id="emailnotification" >
+                                             <label class="custom-control-label" for="emailnotification"></label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row align-items-center">
+                                          <label class="col-md-3" for="smsnotification">SMS Notification:</label>
+                                          <div class="col-md-9 custom-control custom-switch">
+                                             <input type="checkbox" class="custom-control-input" id="smsnotification" checked="">
+                                             <label class="custom-control-label" for="smsnotification"></label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row align-items-center">
+                                          <label class="col-md-3" for="npass">When To Email</label>
+                                          <div class="col-md-9">
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email01">
+                                                <label class="custom-control-label" for="email01">You have new notifications.</label>
+                                             </div>
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email02">
+                                                <label class="custom-control-label" for="email02">You're sent a direct message</label>
+                                             </div>
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email03" checked="">
+                                                <label class="custom-control-label" for="email03">Someone adds you as a connection</label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="form-group row align-items-center">
+                                          <label class="col-md-3" for="npass">When To Escalate Emails</label>
+                                          <div class="col-md-9">
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email04">
+                                                <label class="custom-control-label" for="email04"> Upon new order.</label>
+                                             </div>
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email05">
+                                                <label class="custom-control-label" for="email05"> New membership approval</label>
+                                             </div>
+                                             <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="email06" checked="">
+                                                <label class="custom-control-label" for="email06"> Member registration</label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <button type="submit" class="btn btn-primary mr-2">Submit</button>&nbsp;
+                                       &nbsp;
+                                       <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="manage-contact" role="tabpanel">
+                              <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title" style="font-weight: bold;text-transform: uppercase;">Manage <span style="color: #48dbfb;">Contact</span></h4>
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body">
+                                    <form>
+                                       <div class="form-group">
+                                          <label for="cno">Contact Number:</label>
+                                          <input type="text" class="form-control" id="cno" value="0123456789">
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="email">Email:</label>
+                                          <input type="text" class="form-control" id="email" value="usergmail@gmail.com">
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="url">Url:</label>
+                                          <input type="text" class="form-control" id="url" value="https://userwebsite.com">
+                                       </div>
+                                       <button type="submit" class="btn btn-primary mr-2">Submit</button>&nbsp;
+                                       &nbsp;
+                                       <button type="reset" class="btn iq-bg-danger">Cancel</button>
+                                    </form>
+                                 </div>
+                              </div> {% endcomment %}
+                           </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script src="{% static 'js/setting/jquery.min.js' %}"></script>
+      <script src="{% static 'js/setting/popper.min.js' %}"></script>
+      <script src="{% static 'js/setting/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/setting/bootstrap.js' %}"></script>
+      <script src="{% static 'js/setting/custom.js' %}"></script>
+   </body>
+</html>

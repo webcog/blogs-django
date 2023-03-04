@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="text-center my-4 zindex2">{{ post.title }} POST</h1>
+<div class="container ">
+    <div class="ms-5">
+        <div>
+            <img src="{{ post.post_image.url }}" alt="" style="width: 100%; height: 300px;background-color: red;">
+        </div>
+        <div>
+            <h2 class="text-center my-4"> <b>{{ post.title }}</b></h2>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p> <b>Author - {{ post.created_by }}</b></p>
+                <p>Last Update -  {{ post.updated_at }}</p>
+            </div>
+            <div class="col-6">
+                <a href="https://www.youtube.com/@webcog/" target="_blank" class="icons yt"><i class='bx bxl-youtube'></i></a>
+                <a href="https://www.linkedin.com/in/wajahat-murtaza-5b4296214/" target="_blank" class="icons link"><i class='bx bxl-linkedin-square'></i></a>
+                <a href="https://www.instagram.com/wajahat.murtaza.yt/" target="_blank" class="icons insta"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.facebook.com/wajahat.murtaza.yt/" target="_blank" class="icons fb"><i class='bx bxl-facebook'></i></a>
+            </div>
+        </div>
+        <hr>
+        <div class="col-12 my-5 align">
+            {{ post.content | safe }}
+        </div>
+       
+    </div>
+</div>
+
+{% endblock content %}

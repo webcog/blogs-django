@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-center m-4">POSTS</h1>
+<div class="container">
+  <a href="{% url 'upload_post' %}" class="btn btn-outline-primary my-3 d-flex justify-content-center p-2" style="margin-left:90px !important">Upload Post</a>
+    {% for post in posts %}
+<div class="card mb-3 shadow" style="max-width: 100%; margin-left:95px !important; background:transparent !important;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if post.post_image %}
+        <img src="{{ post.post_image.url }}" style="height:304px;" class="img-fluid rounded-start" alt="...">
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body p-4">
+          <h2 class="card-title">{{ post.title }}</h2>
+          <p class="card-text">{{ post.content|slice:"0:140" | safe  }}...</p>
+          <h6 class="card-text mt-1"><b>Category:- </b><span>{{ post.category }}</span></h6>
+          <h6 class="card-text mt-1"><b>Author:- </b><span>{{ post.created_by }}</span></h6>        
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary p-2 my-3 ">Read More</a>
+          {% if post.created_by == request.user %}
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-warning p-2 my-3 ">Update Post</a>
+          <a href="{% url 'post_delete' post.slug %}" class="btn btn-danger p-2 my-3 ">Delete Post</a>
+          {% endif %}
+          <hr>
+          <br>
+          <p class="card-text"><small class="text-muted mt-4">Last updated: {{ post.updated_at }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="d-flex justify-content-between">
+    {% if prev %}
+      <a href="?page={{prev}}" class="btn btn-primary p-2 text-white" style=" margin-left:95px !important;"> &laquo; Previous</a>
+      {% else %}
+     <a href="#" class="btn btn-primary p-2 text-white" style=" margin-left:95px !important;"> &laquo; Previous</a>
+      {% endif %}
+      {% if nxt %}
+      <a href="?page={{nxt}}" class="btn btn-primary p-2 text-white">Next &raquo;</a>
+      {% else %}
+     <a href="#" class="btn btn-primary p-2 text-white">Next &raquo;</a>
+      {% endif %}
+    </div>
+</div>
+<br>
+{% endblock content %}

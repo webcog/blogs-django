@@ -1,0 +1,38 @@
+.align {
+  text-align: justify;
+}
+
+.row .icons {
+  font-size: 35px;
+  float: right;
+  margin-right: 25px !important;
+}
+.row .yt {
+  color: black;
+}
+.row .yt:hover {
+  color: red;
+}
+.row .link {
+  color: black;
+}
+.row .link:hover {
+  color: rgb(0, 13, 255);
+}
+.row .insta {
+  color: black;
+}
+.row .insta:hover {
+  color: rgb(255, 0, 72);
+}
+.row .fb {
+  color: black;
+}
+.row .fb:hover {
+  color: rgb(0, 13, 255);
+}
+
+div .shadow:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 25px !important;
+  z-index: 4;
+}/*# sourceMappingURL=card.css.map */

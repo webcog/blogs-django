@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="text-center my-4 ">Categories</h1>
+<div class="container">
+<div class="row">
+    {% for category in categories %}
+    <div class="col-md-4">
+        <div class="card p-2 shadow mt-4" style="width: 18rem;margin-left: 70px !important;background:transparent !important;">
+            <img src="{{ category.profile_image.url }}" class="card-img-top"
+                alt="..." style="height:175px !important;">
+            <div class="card-body p-3">
+                <h5 class="card-title text-center my-2">{{ category.name }}</h5>
+                <p class="card-text text-center">{{ category.description|slice:"0:27" }}...</p>
+                    <div class="text-center my-2">
+                <a href="{% url 'cat_post' category.id %}" class="btn btn-primary p-1 ">See Posts</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="container">
+<div class="d-flex justify-content-between mt-5">
+    {% if prev %}
+      <a href="?page={{prev}}" class="btn btn-primary p-2 text-white" style=" margin-left:95px !important;"> &laquo; Previous</a>
+      {% else %}
+     <a href="#" class="btn btn-primary p-2 text-white" style=" margin-left:95px !important;"> &laquo; Previous</a>
+      {% endif %}
+      {% if nxt %}
+      <a href="?page={{nxt}}" class="btn btn-primary p-2 text-white">Next &raquo;</a>
+      {% else %}
+     <a href="#" class="btn btn-primary p-2 text-white">Next &raquo;</a>
+      {% endif %}
+    </div>
+</div>
+</div>
+<br>
+{% endblock content %}

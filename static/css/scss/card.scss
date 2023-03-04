@@ -1,0 +1,46 @@
+.align{
+    text-align: justify;
+}
+.row{
+    .icons{
+        font-size: 35px;
+        float: right;
+        // padding: 14px !important;
+        margin-right: 25px !important;
+    }
+    .yt{
+        color: black;
+        &:hover{
+            color: red;
+        }
+    }
+    .link{
+        color: black;
+        &:hover{
+            color: rgb(0, 13, 255);
+        }
+    }
+    .insta{
+        color: black;
+        &:hover{
+            color: rgb(255, 0, 72);
+        }
+    }
+    .fb{
+        color: black;
+        &:hover{
+            color: rgb(0, 13, 255);
+        }
+    }
+
+
+}
+div{
+   
+.shadow{
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 25px !important;
+        z-index: 4;
+    }
+}
+}
